@@ -1,0 +1,20 @@
+class Solution:
+    def calPoints(self, operations: List[str]) -> int:
+        st=[]
+        for i in operations:
+            match(i):
+                case "+":
+                    op1=st[-1]
+                    op2=st[-2]
+                    st.append(op1+op2)
+                case "D":
+                    op=st[-1]
+                    st.append(2*op)
+                case "C":
+                    st.pop()
+                case _:
+                    st.append(int(i))
+        sum1=0
+        if st:
+            sum1=sum(st)
+        return sum1
